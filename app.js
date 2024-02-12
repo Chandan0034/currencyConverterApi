@@ -9,6 +9,9 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json());
 const PORT=process.env.PORT||4000;
 let output;
+app.get('/',async(req,res)=>{
+    return res.status(200).send("Hello Welcome To Currency Converter App")
+})
 app.get('/api/converter',async(req,res)=>{
     try {
         const {source,target,value}=req.query;
