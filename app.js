@@ -26,7 +26,7 @@ app.get('/api/converter',async(req,res)=>{
                      sourse:source,
                      target:target,
                      value:value,
-                     convetedAmount:response
+                     convertedAmount:response
                  })
                 }else{
                  return res.status(400).json({
@@ -34,7 +34,7 @@ app.get('/api/converter',async(req,res)=>{
                      sourse:source,
                      target:target,
                      value:value,
-                     convetedAmount:"Conveted Error"
+                     convertedAmount:"Conveted Error"
                  })
                 }
              }).catch((error)=>{
@@ -43,7 +43,7 @@ app.get('/api/converter',async(req,res)=>{
                      sourse:source,
                      target:target,
                      value:value,
-                     convetedAmount:error
+                     convertedAmount:error
                  })
              })
         }else{
@@ -52,13 +52,13 @@ app.get('/api/converter',async(req,res)=>{
                 sourse:source,
                 target:target,
                 value:value,
-                convetedAmount:"Please Write The Suitable Symbol"
+                convertedAmount:"Please Write The Suitable Symbol"
             })
         }
     } catch (error) {
         return res.status(401).json({
             success:false,
-            convetedAmount:error
+            convertedAmount:error
         })
     }
 
