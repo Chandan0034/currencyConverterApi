@@ -2,7 +2,7 @@
   "name": "exchange",
   "version": "1.0.0",
   "description": "",
-  "main": "exchange.js",
+  "main": "app.js",
   "scripts": {
     "start":"node app.js"
   },
