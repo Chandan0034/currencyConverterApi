@@ -14,9 +14,23 @@ output=currencyConvert.currencyCode;
 app.get('/',async(req,res)=>{
     return res.status(200).send("Hello Welcome To Currency Converter App")
 })
+app.get('/api/symbol',(req,res)=>{
+    let currencyConvert=new CC();
+    const result= currencyConvert['currencies']
+    return res.status(200).json({
+        success:true,
+        symbol:result
+    });
+})
 app.get('/api/converter',async(req,res)=>{
     try {
         const {source,target,value}=req.query;
+        if(!source ||!target ||!value){
+            return res.status(400).json({
+                success:false,
+                message:'Write the all parameter carefully'
+            })
+        }
         console.log(source,target,value)
         let currencyConvert=new CC();
         if(output.includes(source.toUpperCase()) && output.includes(target.toUpperCase())){
