@@ -17,6 +17,7 @@ app.get('/',async(req,res)=>{
 app.get('/api/converter',async(req,res)=>{
     try {
         const {source,target,value}=req.query;
+        console.log(source,target,value)
         let currencyConvert=new CC();
         if(output.includes(source.toUpperCase()) && output.includes(target.toUpperCase())){
             currencyConvert.from(source).to(target).convert(parseFloat(value)).then((response)=>{
@@ -32,11 +33,7 @@ app.get('/api/converter',async(req,res)=>{
                 }else{
                  return res.status(400).json({
                      success:false,
-                     Country:`${currencyConvert.currencies[source.toUpperCase()]} to ${currencyConvert.currencies[target.toUpperCase()]}`,
-                     sourse:source,
-                     target:target,
-                     value:value,
-                     convertedAmount:"Conveted Error"
+                     message:"Please provide source, target, and value in query parameters."
                  })
                 }
              }).catch((error)=>{
